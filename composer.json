@@ -1,0 +1,20 @@
+{
+  "name": "kasterweb/catalogPrice",
+  "license": "GPL-3.0",
+  "type": "magento-module",
+  "description": "Magento Catalog Price Parcels",
+  "version": "1.0.0",
+  "keywords": [
+    "Kasterweb","Catalog Price Parcels","Magento"
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=5.6"
+  },
+  "authors": [
+    {
+      "name": "Luan Alves",
+      "email": "luan.prog@gmail.com"
+    }
+  ]
+}
