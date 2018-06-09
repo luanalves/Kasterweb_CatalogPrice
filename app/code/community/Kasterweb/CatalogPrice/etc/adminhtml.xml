@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <kasterweb_catalogpriceoptions module="kasterweb_catalogprice" translate="title">
+                                        <title>Kasterweb Catalog Price Info</title>
+                                    </kasterweb_catalogpriceoptions>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>
