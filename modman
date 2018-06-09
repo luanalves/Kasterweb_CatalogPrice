@@ -1,0 +1,6 @@
+app/code/community/Kasterweb/CatalogPrice app/code/community/Kasterweb/CatalogPrice
+app/etc/modules/Kasterweb_CatalogPrice.xml.xml  app/etc/modules/Kasterweb_CatalogPrice.xml.xml
+app/design/frontend/base/default/layout/kasterweb/catalogprice.xml  app/design/frontend/base/default/layout/kasterweb/catalogprice.xml
+app/locale/pt_BR/kasterweb/CatalogPrice.csv app/locale/pt_BR/kasterweb/CatalogPrice.csv
+skin/frontend/base/default/css/jquery-ui skin/frontend/base/default/css/jquery-ui
+skin/frontend/base/default/js/jquery-ui.js skin/frontend/base/default/js/jquery-ui.js
