@@ -2,6 +2,15 @@
 
 class Kasterweb_CatalogPrice_Model_Product extends Mage_Catalog_Model_Product
 {
+
+    public $qtyParcelsWithoutInterest = 0;
+
+    public function __construct()
+    {
+        parent::_construct();
+        $this->setQtyParcelsWithoutInterest(Mage::helper('kasterweb_catalogprice')->qty_parcels_without_interest());
+    }
+
     public function getValueCashDiscount()
     {
         return Mage::helper('kasterweb_catalogprice')->cash_discount();
@@ -15,12 +24,25 @@ class Kasterweb_CatalogPrice_Model_Product extends Mage_Catalog_Model_Product
 
     public function getValueParcelWithoutInterest()
     {
-        return Mage::helper('core')->currency($this->getFinalPrice() / $this->getQtyParcelsWithoutInterest(), true, false);
+        for ($x = $this->getQtyParcelsWithoutInterest(); $x >= 1; $x--) {
+            $value = $this->getFinalPrice() / $x;
+            if (Mage::helper('kasterweb_catalogprice')->validateParcelValueMinimun($value)) {
+                $this->setQtyParcelsWithoutInterest($x);
+                break;
+            }
+        }
+        return Mage::helper('core')->currency($value, true, false);
+    }
+
+    public function setQtyParcelsWithoutInterest($value)
+    {
+        $this->qtyParcelsWithoutInterest = $value;
     }
 
     public function getQtyParcelsWithoutInterest()
     {
-        return Mage::helper('kasterweb_catalogprice')->qty_parcels_without_interest();
+//        this-> Mage::helper('kasterweb_catalogprice')->qty_parcels_without_interest();
+        return $this->qtyParcelsWithoutInterest;
     }
 
     public function getTableParcelsWithoutInterest()

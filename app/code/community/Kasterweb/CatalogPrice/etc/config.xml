@@ -36,4 +36,13 @@
             </modules>
         </translate>
     </global>
+    <frontend>
+        <layout>
+            <updates>
+                <kasterweb_catalogprice>
+                    <file>kasterweb/catalogprice.xml</file>
+                </kasterweb_catalogprice>
+            </updates>
+        </layout>
+    </frontend>
 </config> 

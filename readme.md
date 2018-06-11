@@ -49,7 +49,8 @@ Add Code in Front End Page
 <?php if (Mage::helper('kasterweb_catalogprice')->_enable()) : ?>
     <div class="kprice-info">
         <div class="kprice-info-parcela">
-            <?php echo $_product->getQtyParcelsWithoutInterest() . 'x de <b>' . $_product->getValueParcelWithoutInterest() . '</b> s/ juros <br />'; ?>
+            <?php $valueParcelWithoutInterest = $_product->getValueParcelWithoutInterest() ;?>
+            <?php echo $_product->getQtyParcelsWithoutInterest() . 'x de <b>' .$valueParcelWithoutInterest . '</b> s/ juros <br />'; ?>
         </div>
         <div class="kprice-info-desconto">
             <?php echo 'Á vista ' . $_product->getCashDiscount() . ' boleto <br />'; ?>
