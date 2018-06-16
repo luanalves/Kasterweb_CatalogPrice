@@ -26,8 +26,8 @@ class Kasterweb_CatalogPrice_Model_Product extends Mage_Catalog_Model_Product
     {
         for ($x = $this->getQtyParcelsWithoutInterest(); $x >= 1; $x--) {
             $value = $this->getFinalPrice() / $x;
+            $this->setQtyParcelsWithoutInterest($x);
             if (Mage::helper('kasterweb_catalogprice')->validateParcelValueMinimun($value)) {
-                $this->setQtyParcelsWithoutInterest($x);
                 break;
             }
         }
@@ -41,7 +41,6 @@ class Kasterweb_CatalogPrice_Model_Product extends Mage_Catalog_Model_Product
 
     public function getQtyParcelsWithoutInterest()
     {
-//        this-> Mage::helper('kasterweb_catalogprice')->qty_parcels_without_interest();
         return $this->qtyParcelsWithoutInterest;
     }
 
