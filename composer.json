@@ -3,7 +3,7 @@
   "license": "GPL-3.0",
   "type": "magento-module",
   "description": "Magento Catalog Price Parcels",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "keywords": [
     "Kasterweb","Catalog Price Parcels","Magento"
   ],
