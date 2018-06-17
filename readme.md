@@ -55,8 +55,10 @@ Add Code in Front End Page
         <div class="kprice-info-desconto">
             <?php echo 'Á vista ' . $_product->getCashDiscount() . ' boleto <br />'; ?>
         </div>
-        <a href="javascript:void(0)" id="button-open-parcels">Exibir Parcelas</a>
-        <div class="table-parcels hidden" id="table_parcels">
+        <?php if (Mage::helper('kasterweb_catalogprice')->validateParcelValueMinimun($_finalPrice)): ?>
+
+        <a href="javascript:void(0)" id="button-open-parcels-<?php echo $_product->getId();?>">Exibir Parcelas</a>
+        <div class="table-parcels hidden" id="table_parcels-<?php echo $_product->getId();?>">
             <?php $parcels = $_product->getTableParcelsWithoutInterest();
             if (!empty($parcels)):?>
                 <table>
@@ -86,9 +88,9 @@ Add Code in Front End Page
             <?php endif; ?>
             <script>
                 $j(document).ready(function () {
-                    $j("#button-open-parcels").on("click", function () {
-                        $j("#table_parcels").removeClass('hidden');
-                        $j("#table_parcels").dialog({
+                    $j("#button-open-parcels-<?php echo $_product->getId();?>").on("click", function () {
+                        $j("#table_parcels-<?php echo $_product->getId();?>").removeClass('hidden');
+                        $j("#table_parcels-<?php echo $_product->getId();?>").dialog({
                             title: "Parcelas",
                             modal: true
                         });
@@ -97,32 +99,9 @@ Add Code in Front End Page
 
             </script>
         </div>
+        <?php endif ?>
     </div>
-
-    <?php if ($this->getDisplayMinimalPrice() && $_minimalPriceValue && $_minimalPriceValue < $_convertedFinalPrice): ?>
-
-        <?php $_minimalPriceDisplayValue = $_minimalPrice; ?>
-        <?php if ($_weeeTaxAmount && $_weeeHelper->typeOfDisplay($_product, array(0, 1, 4))): ?>
-            <?php $_minimalPriceDisplayValue = $_minimalPrice + $_weeeTaxAmount; ?>
-        <?php endif; ?>
-
-        <?php if ($this->getUseLinkForAsLowAs()): ?>
-            <a href="<?php echo $_product->getProductUrl(); ?>" class="minimal-price-link">
-        <?php else: ?>
-            <span class="minimal-price-link">
-        <?php endif ?>
-        <span class="label"><?php echo $this->__('As low as:') ?></span>
-        <span class="price" id="product-minimal-price-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>">
-            <?php echo $_coreHelper->formatPrice($_minimalPriceDisplayValue, false) ?>
-        </span>
-        <?php if ($this->getUseLinkForAsLowAs()): ?>
-            </a>
-        <?php else: ?>
-            </span>
-        <?php endif ?>
-    <?php endif; ?>
 <?php endif ?>
-
 ```
 
 
